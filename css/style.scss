@@ -1,0 +1,168 @@
+@import 'config';
+@import 'menu';
+// Start Global Syntax //
+* {
+    box-sizing: border-box;
+}
+body {
+    @include background();
+    background-color: $primary-color;
+    margin: 0;
+    color: set-text-color($primary-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.5;
+}
+a{
+    text-decoration: none;
+    color: #fff;
+}
+
+// Start Home Page //
+main {
+    padding: 4rem;
+    //height: 100%;
+    min-height: calc(100vh - 60px);
+    &#home {
+        overflow: hidden;
+        h1 {
+            margin-top: 20vh;
+        }
+    }
+    h1, h2, h3 {
+        font-weight: 400;
+        margin: 0;
+        &.lg-heading{
+            font-size: 6rem;  
+        }
+        &.sm-heading {
+            margin-bottom: 2rem;
+            padding: 0.2rem 1rem;
+            background: rgba(lighten($primary-color, 2),.5);
+        }
+    }
+    .Secondary-name{
+        color: $secondry-color;
+    }
+    .icons {
+        margin-top: 1rem;
+        a {
+            @include trans();
+            padding: 0.2rem;
+            color: set-text-color($primary-color);
+            &:hover {
+                color: $secondry-color;
+                
+            }
+        }
+    }
+}
+
+// Start About Me Page//
+.about-info {
+    display: grid;
+    grid-gap:30px;
+    grid-template-areas: 
+    'bio-img bio bio'
+    'job-1 job-2 job-3';
+    grid-template-columns: repeat(3, 1fr);
+}
+.bio-img {
+    grid-area: bio-img;
+    width: 250px;
+    height: 250px;
+    border: 3px solid $secondry-color;
+    border-radius: 50%;
+    margin: auto;
+    overflow: hidden;
+    
+}
+.bio {
+    grid-area: bio;
+    font-size: 1.5rem;
+    h3 {
+        color: $secondry-color;
+    }
+}
+.job-1 {
+    grid-area: job-1;
+}
+.job-2 {
+    grid-area: job-2;
+}
+.job-3 {
+    grid-area: job-3;
+}
+.job {
+    background: lighten($primary-color, 5);
+    padding: 10px;
+    border-bottom: 5px solid $secondry-color;
+}
+
+// Start My Work Projects //
+.projects {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap :0.8rem;;
+    img{
+        width: 100%;
+        height: 250px;
+        @include trans;
+        &:hover {
+            opacity: .6;
+        }
+    }
+}/*Button Style In My Work*/
+.btn {
+    display: block;
+    padding: .5rem 1rem;
+    border: 0;
+    margin-bottom: .3rem;
+    @include trans;
+    &:hover {
+        background-color: $secondry-color;
+        color: set-text-color($secondry-color);
+    }
+}
+.btn-dark {
+    @extend .btn;
+    background: darken($primary-color, 50);
+    color: #fff;
+}
+.btn-light {
+    @extend .btn;
+    background: lighten($primary-color, 50);
+    color: #333;
+}
+
+// Start Contact Page //
+.boxes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 1.5rem;
+    div {
+        font-size: 2rem;
+        padding: 1rem 2rem;
+        margin-bottom: 3rem;
+        border: 3px solid #fff;
+        @include trans;
+        &:hover {
+            padding: .5rem 1.5rem;
+            background: $secondry-color;
+            color: set-text-color($secondry-color);
+            span {
+                color: set-text-color($secondry-color);
+            }
+        }
+    }
+}
+// Start Footer //
+#main-footer {
+    height: 60px;
+    text-align: center;
+    padding: 1rem;
+    background: darken($primary-color, 10);
+    color: set-text-color($primary-color)
+}
+@import 'media';

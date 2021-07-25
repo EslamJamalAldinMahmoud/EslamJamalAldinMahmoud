@@ -1,0 +1,61 @@
+$primary-color:rgb(56, 56, 56);
+$secondry-color:#eece1a;
+$show-home-img:true;
+$home-img:url(../imgs/home.jpg);
+$back-opacity:0.8;
+@mixin background {
+    @if $show-home-img {
+        &#bg-img{
+            background: $home-img;
+            background-attachment: fixed;
+            background-size: cover;
+            &::before{
+                content: '';
+                position: fixed;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                z-index: -1;
+                display: block;
+                background-color: rgba($primary-color,$back-opacity);
+            }
+        }
+    }
+}
+// Set Text Color
+@function set-text-color($color){
+    @if (lightness($color) > 40) {
+        @return #222;
+    }@else {
+        @return #fff;
+    }
+}
+// Global Transition 
+@mixin trans {
+    transition: all .4s ease-out;
+    -o-transition: all .4s ease-out;
+    -moz-transition: all .4s ease-out;
+    -webkit-transition: all .4s ease-out;
+}
+// Media Query Mixins 
+@mixin mediaSmall {
+    @media screen and (max-width:576px){
+        @content;
+    }
+}
+@mixin mediaMedium {
+    @media screen and (max-width:768px){
+        @content;
+    }
+}
+@mixin mediaLarge {
+    @media screen and (min-width:769px) and (max-width:992px){
+        @content;
+    }
+}
+@mixin mediaXlarge {
+    @media screen and (min-width:993px) {
+        @content;
+    }
+}

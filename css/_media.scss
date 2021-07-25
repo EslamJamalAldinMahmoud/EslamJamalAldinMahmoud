@@ -1,0 +1,102 @@
+// Wide Screens 
+@include mediaXlarge {
+
+}
+// Desktop & laptops 
+@include mediaLarge {
+    //My Work Projects 
+    .projects {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+// Tablets & Small Laptops 
+@include mediaMedium {
+    main {
+        text-align: center;
+        align-items: center;
+        padding: 1rem;
+        
+        h1, h2, h3 {
+            font-weight: 400;
+            margin: 0;
+            &.lg-heading{
+                line-height: 1;
+                margin-bottom: 1rem;
+                font-size: 4rem;
+                margin-top: 10vh;
+            }
+            &.sm-heading {
+                font-size: 15px;
+            }
+        }
+    }
+    ul.menu-nav,
+    div.menu-brand {
+        float: none;
+        width: 100%;
+        min-height: 0;
+        &.active {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+    .menu-nav {
+        height: 70vh;
+        transform: translate3d(100%, 0, 0);
+        .nav-item{
+            .nav-link{
+                font-size: 20px;
+            }
+        }
+    }
+    .menu-brand {
+        height: 30vh;
+        transform: translate3d(-100%, 0, 0);
+        .portrait {
+            width: 130px;
+            height: 130px;
+            background-size: 250px ;
+        }
+    }
+    // About Me Media
+    .about-info {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+        'bio-img'
+        'bio'
+        'job-1'
+        'job-2'
+        'job-3';
+    }
+    .bio-img {
+        grid-area: bio-img;
+        width: 150px;
+        height: 150px;
+        
+    }
+    .bio {
+        font-size: 1rem;
+        .text-secondary {
+            font-size: 1.25rem;
+        }
+    }
+    //My Work Projects 
+    .projects {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    //contact me 
+    .boxes {
+        div {
+            font-size: 1rem;
+        }
+    }
+}
+// Mobile
+@include mediaSmall {
+    main#home h1 {
+        margin-top: 10vh;
+    }
+    //My Work Projects 
+    .projects {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,120 @@
+// menu Button
+header{
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    .menu-btn {
+        position: absolute;
+        z-index: 3;
+        top: 35px;
+        right: 35px;
+        cursor: pointer;
+        @include trans;
+        .btn-line {
+            width: 28px;
+            height: 3px;
+            margin: 0 0 5px 0;
+            background: set-text-color($primary-color);
+            @include trans;
+        }
+        // Rotate Into X With Menu Lines
+        &.close {
+            transform: rotate(180deg);
+            .btn-line {
+                // Line-1 Rotate
+                &:nth-child(1){
+                    transform: rotate(45deg) translate(5px, 5px);
+                }
+                // Line-2 Hide
+                &:nth-child(2){
+                    opacity: 0;
+                }
+                // Line-3 Rotate
+                &:nth-child(3){
+                    transform: rotate(-45deg) translate(7px, -6px);
+                }
+            }
+        }
+    }
+}
+// Menu Overlay 
+.menu {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    opacity: .9;
+    visibility: hidden;
+    &.active {
+        visibility:visible;
+    }
+    &-brand , &-nav {
+        display: flex;
+        flex-flow: column wrap;
+        align-items: center;
+        justify-content: center;
+        float: left;
+        width: 50%;
+        height: 100vh;
+        overflow: hidden;
+    }
+    &-nav {
+        margin: 0;
+        padding: 0;
+        background: darken($primary-color, $amount: 5);
+        list-style: none;
+        transform: translate3d(0, -100%, 0);
+        @include trans;
+        &.active {
+            // Slide In From Top
+            transform:translate3d(0, 0, 0);
+        }
+    }
+    &-brand {
+        background: $primary-color;
+        transform: translate3d(0, 100%, 0);
+        @include trans;
+        &.active {
+            // Slide In From Bottom
+            transform:translate3d(0, 0, 0);
+        }
+        .portrait {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: url(../imgs/4.jpg)no-repeat center left;
+            background-size: 450px ;
+            border: 3px solid $secondry-color;
+        }
+    }
+    .nav-item {
+        transform: translate3d(200%, 0, 0);
+        @include trans;
+        &.active {
+            // Slide In From Right
+            transform:translate3d(0, 0, 0);
+        }
+        &.current-page > a {
+            color: $secondry-color;
+        }
+        .nav-link {
+            display: inline-block;
+            position: relative;
+            font-size: 28px;
+            padding: .8rem 0;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 400;
+            color: set-text-color($primary-color);
+            @include trans;
+            &:hover {
+                color: $secondry-color;
+            }
+        }
+    }
+}
+// Delay Every Nav-item By .1s
+@for $x from 1 through 4 {
+    .nav-item:nth-child(#{$x}){
+        transition-delay: $x * .2s;
+    }
+}
